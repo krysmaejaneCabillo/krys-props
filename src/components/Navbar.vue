@@ -152,7 +152,7 @@ export default {
                                     <circle cx="12" cy="7" r="4" />
                                 </svg>
                             </a>
-                            <a href="#" class="text-white relative">
+                            <a href="#" @click="navigate('cart')"  class="text-white relative">
                                 <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
