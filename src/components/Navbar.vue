@@ -1,15 +1,25 @@
 <script>
 export default {
     props: {
-    cartCount: {
-        type: Number,
-        default: 0
-    }
+        cartCount: {
+            type: Number,
+            default: 0
+        }
     },
     data() {
         return {
-            // No extra data needed
+            searchBar: ''
         }
+    },
+    computed: {
+        filteredProducts() {
+            if (!this.searchBar.trim) {
+                return this.products
+            }
+            const query = this.searchBar.toLowerCase().trim();
+            return this.products.filter()
+        }
+
     },
     methods: {
         addModal() {
@@ -36,8 +46,9 @@ export default {
             <div class="max-w-[1400px] mx-auto">
                 <!-- Desktop & Tablet View -->
                 <div class="hidden md:flex items-center justify-between px-4 lg:px-6 py-3">
-                    <!-- Logo --> 
-                    <a @click="navigate('Home')" href="#" class="text-[28px] font-bold text-white tracking-wider">K R Y S</a>
+                    <!-- Logo -->
+                    <a @click="navigate('Home')" href="#" class="text-[28px] font-bold text-white tracking-wider">K R Y
+                        S</a>
 
                     <!-- Main Categories -->
                     <nav class="flex items-center space-x-8 text-[14px] font-medium text-white">
@@ -84,7 +95,7 @@ export default {
                     <div class="flex items-center space-x-5">
                         <!-- Search Box -->
                         <div class="relative">
-                            <input type="text" placeholder="Search products, brands and styles"
+                            <input v-model="searchBar" type="text" placeholder="Search products, brands and styles"
                                 class="bg-white rounded-full py-2.5 px-4 pl-10 w-[240px] lg:w-[320px] text-[14px] focus:outline-none border border-transparent focus:border-pink-300  focus:ring-2 transition-all">
                             <!-- Search SVG Icon -->
                             <svg class="w-5 h-5 text-shein.gray absolute left-3 top-1/2 -translate-y-1/2" fill="none"
@@ -108,7 +119,8 @@ export default {
                                     d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                             </svg>
                         </a>
-                        <a @click="navigate('cart')" href="#" class="text-white hover:text-pink-200 transition-colors relative">
+                        <a @click="navigate('cart')" href="#"
+                            class="text-white hover:text-pink-200 transition-colors relative">
                             <!-- Cart SVG -->
                             <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" fill="none" viewBox="0 0 24 24">
@@ -118,7 +130,7 @@ export default {
                             </svg>
 
                             <span
-                                class="absolute -top-2 -right-2 bg-pink-200 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">{{cartCount}}</span>
+                                class="absolute -top-2 -right-2 bg-pink-200 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">{{ cartCount }}</span>
                         </a>
                     </div>
                 </div>
@@ -135,7 +147,8 @@ export default {
                         </button>
 
                         <!-- Logo -->
-                        <a @click="navigate('Home')"  href="#" class="text-[22px] font-bold text-white tracking-wider">K R Y S</a>
+                        <a @click="navigate('Home')" href="#" class="text-[22px] font-bold text-white tracking-wider">K
+                            R Y S</a>
 
                         <!-- Icons -->
                         <div class="flex items-center space-x-4">
@@ -152,7 +165,7 @@ export default {
                                     <circle cx="12" cy="7" r="4" />
                                 </svg>
                             </a>
-                            <a href="#" @click="navigate('cart')"  class="text-white relative">
+                            <a href="#" @click="navigate('cart')" class="text-white relative">
                                 <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
@@ -160,7 +173,7 @@ export default {
                                         d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
                                 </svg>
                                 <span
-                                    class="absolute -top-2 -right-2 bg-pink-200 text-white text-[9px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">{{cartCount}}</span>
+                                    class="absolute -top-2 -right-2 bg-pink-200 text-white text-[9px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">{{ cartCount }}</span>
                             </a>
                         </div>
                     </div>
