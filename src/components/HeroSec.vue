@@ -58,7 +58,7 @@ export default {
                 },
                 {
                     id: 7,
-                    image: 'https://tse1.explicit.bing.net/th/id/OIP.rcvWrZJCW3IIIzsPUTfgKwHaLf?r=0&pid=ImgDet&w=182&h=281&c=7&dpr=1.3&o=7&rm=3',
+                    image: 'https://th.bing.com/th/id/OIP.sf3h9-mW7vjlDPzP40Bz_QHaIW?w=208&h=235&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3',
                     name: 'Floral Strapless Mini Dress',
                     price: '85',
                     sku: 'sz2411265665417997'
