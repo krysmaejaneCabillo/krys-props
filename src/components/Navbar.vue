@@ -135,7 +135,7 @@ export default {
                         </button>
 
                         <!-- Logo -->
-                        <a href="#" class="text-[22px] font-bold text-white tracking-wider">K R Y S</a>
+                        <a @click="navigate('Home')"  href="#" class="text-[22px] font-bold text-white tracking-wider">K R Y S</a>
 
                         <!-- Icons -->
                         <div class="flex items-center space-x-4">
