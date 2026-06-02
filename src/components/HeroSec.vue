@@ -268,7 +268,7 @@ export default {
         <section id="Projects" class="py-16">
             <div
                 class="w-fit mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center justify-center gap-y-12 gap-x-8 px-4">
-                <div v-for="(product, index) in filteredProduct" :key="product.id"
+                <div v-for="(product, index) in products" :key="product.id"
                     class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-pink-100">
                     
                     <div class="relative overflow-hidden">
