@@ -14,18 +14,7 @@ export default {
             total: "0.00"
         };
     },
-        computed: {
-        filteredProducts() {
-            if (!this.searchBar.trim) {
-                return this.products
-            }
-            const query = this.searchBar.toLowerCase().trim();
-            return this.products.filter(product => 
-                product.name.toLowerCase().includes(query)
-            )
-        }
-
-    },
+    
     methods: {
         removeItem(id) {
           
