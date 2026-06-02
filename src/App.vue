@@ -8,12 +8,14 @@ export default {
     Navbar,
     HeroSec,
     AddCart
+
   },
   data() {
     return {
       showAddProduct: false,
       currentPage: 'Home',
       cart: [],
+      searchBar: ''
     }
   },
   methods: {
@@ -25,14 +27,18 @@ export default {
     },
     addItem(product) {
       this.cart.push({ ...product });
-    }
+    },
+     handleSearch(searchValue) {
+    tjis.searchBar('Search query:', searchValue)
+    
+  }
   }
 }
 </script>
 
 <template>
-  <Navbar @openAddModal="showAddProduct = tru" @goTo="changePage" :cartCount="cart.length" />
-  <HeroSec v-if="currentPage === 'Home'" :addingProduct="showAddProduct" @closeThisModal="showAddProduct = false"
+  <Navbar @openAddModal="showAddProduct = tru" @goTo="changePage" :cartCount="cart.length" @search-bar="handleSearch" />
+  <HeroSec v-if="currentPage === 'Home'" :addingProduct="showAddProduct" @closeThisModal="showAddProduct = false" :bar="searchBar"
     @add-to-cart="addItem" />
   <AddCart v-if="currentPage === 'cart'" :cart="cart" />
 </template>

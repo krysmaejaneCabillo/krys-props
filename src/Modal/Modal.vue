@@ -3,15 +3,7 @@ export default {
     props: {
         selectedProduct: {
             type: Object,
-            // required: true,
-            // default: () => ({
-            //     name: '',
-            //     price: 0,
-            //     sku: '',
-            //     description: '',
-            //     features: [],
-            //     image: ''
-            // })
+       
         }
     },
     data() {

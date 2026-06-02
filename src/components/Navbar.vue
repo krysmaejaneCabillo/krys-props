@@ -30,6 +30,9 @@ export default {
         navigate(page) {
             this.$emit('goTo', page)
         },
+        search(){
+            this.$emit(search-bar, this.searchBar )
+        }
     }
 }
 
