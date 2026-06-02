@@ -8,7 +8,7 @@ export default {
         selectedProduct: {
             type: Object,
         },
-        bar: {
+        searchbar: {
             type : String
         }
     },
