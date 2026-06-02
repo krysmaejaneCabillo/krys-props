@@ -3,7 +3,7 @@ export default {
     props: {
         cart: {
             type: Array,
-          
+
         }
     },
     data() {
@@ -14,10 +14,23 @@ export default {
             total: "0.00"
         };
     },
-    
+    computed: {
+        subtotal() {
+            return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2);
+        },
+        shippingFee() {
+            return (this.subtotal > 0 ? 5.99 : 0).toFixed(2);
+        },
+        tax() {
+            return (this.subtotal * 0.08).toFixed(2); // 8% tax
+        },
+        total() {
+            return (parseFloat(this.subtotal) + parseFloat(this.shippingFee) + parseFloat(this.tax)).toFixed(2);
+        }
+    },
     methods: {
         removeItem(id) {
-          
+
             console.log("Remove item:", id);
         }
     }
