@@ -29,7 +29,7 @@ export default {
       this.cart.push({ ...product });
     },
      handleSearch(searchValue) {
-    tjis.searchBar('Search query:', searchValue)
+    this.searchBar = searchValue
     
   }
   }
