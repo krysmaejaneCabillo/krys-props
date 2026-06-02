@@ -11,7 +11,18 @@ export default {
             searchBar: ''
         }
     },
- 
+    computed: {
+        filteredProducts() {
+            if (!this.searchBar.trim) {
+                return this.products
+            }
+            const query = this.searchBar.toLowerCase().trim();
+            return this.products.filter(product => 
+                product.name.toLowerCase().includes(query)
+            )
+        }
+
+    },
     methods: {
         addModal() {
             this.$emit('openAddModal')
@@ -19,9 +30,6 @@ export default {
         navigate(page) {
             this.$emit('goTo', page)
         },
-        search(){
-            this.$emit(search-bar)
-        }
     }
 }
 
@@ -89,7 +97,7 @@ export default {
                     <div class="flex items-center space-x-5">
                         <!-- Search Box -->
                         <div class="relative">
-                            <input @click="search" v-model="searchBar" type="text" placeholder="Search products, brands and styles"
+                            <input v-model="searchBar" type="text" placeholder="Search products, brands and styles"
                                 class="bg-white rounded-full py-2.5 px-4 pl-10 w-[240px] lg:w-[320px] text-[14px] focus:outline-none border border-transparent focus:border-pink-300  focus:ring-2 transition-all">
                             <!-- Search SVG Icon -->
                             <svg class="w-5 h-5 text-shein.gray absolute left-3 top-1/2 -translate-y-1/2" fill="none"

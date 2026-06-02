@@ -14,20 +14,7 @@ export default {
       showAddProduct: false,
       currentPage: 'Home',
       cart: [],
-      searchBar: ''
     }
-  },
-  computed: {
-    filteredProducts() {
-      if (!this.searchBar.trim) {
-        return this.products
-      }
-      const query = this.searchBar.toLowerCase().trim();
-      return this.products.filter(product =>
-        product.name.toLowerCase().includes(query)
-      )
-    }
-
   },
   methods: {
     addModal() {
@@ -44,7 +31,7 @@ export default {
 </script>
 
 <template>
-  <Navbar @openAddModal="showAddProduct = tru" @goTo="changePage" :cartCount="cart.length" @search-bar="filteredProducts" />
+  <Navbar @openAddModal="showAddProduct = tru" @goTo="changePage" :cartCount="cart.length" />
   <HeroSec v-if="currentPage === 'Home'" :addingProduct="showAddProduct" @closeThisModal="showAddProduct = false"
     @add-to-cart="addItem" />
   <AddCart v-if="currentPage === 'cart'" :cart="cart" />
