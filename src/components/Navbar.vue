@@ -8,7 +8,7 @@ export default {
     },
     data() {
         return {
-           
+           searchBar: ''
         }
     },
 
@@ -20,7 +20,7 @@ export default {
             this.$emit('goTo', page)
         },
         search(){
-            this.$emit(search-bar, this.searchBar )
+            this.$emit('search-bar', this.searchBar )
         }
     }
 }
