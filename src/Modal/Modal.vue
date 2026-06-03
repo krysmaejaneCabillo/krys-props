@@ -14,7 +14,7 @@ export default {
     },
 
     methods: {
-        closeModal() {
+        close() {
             this.$emit('close-modal');
         },
         confirmPurchase() {
@@ -22,7 +22,7 @@ export default {
                 ...this.selectedProduct,
                 quantity: this.quantity
             });
-            this.closeModal()
+            this.close()
         }
     }
 };
@@ -145,7 +145,7 @@ export default {
                         <!-- Close Button -->
                         <button 
                             class="text-sm text-amber-600 hover:text-amber-800 transition flex items-center gap-1.5 mt-2 cursor-pointer" 
-                            @click="closeModal"
+                            @click="close"
                         >
                             <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>

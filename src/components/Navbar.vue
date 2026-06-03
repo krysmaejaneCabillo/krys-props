@@ -183,7 +183,7 @@ export default {
                                     class="absolute -top-2 -right-2 bg-pink-200 text-white text-[9px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">{{
                                         cartCount }}</span>
                             </a>
-                            <a href="#" class="text-white relative">
+                            <a @click="navigate('history')" href="#" class="text-white relative">
                                 <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="24" fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"

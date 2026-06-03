@@ -6,7 +6,7 @@ export default {
 
         }
     },
-    emits:['Remove item', 'history'],
+    emits: ['history'],
     data() {
         return {
             subtotal: "0.00",
@@ -17,15 +17,11 @@ export default {
     },
 
     methods: {
-        removeItem(id) {
-
-            this.$emits("Remove item:", id);
-        },
         purchase() {
-            this.$emit('history', [
+            this.$emit('history',
                 ...this.cart,
-            ]);
-          console.log([...this.cart])
+            );
+            console.log(...this.cart)
         }
     }
 };
@@ -113,66 +109,70 @@ export default {
                                     ×
                                 </button>
                             </div>
+
+                            <!-- Order Summary Section -->
+                            <div class="space-y-5">
+                                <!-- Summary Card -->
+                                <div class="bg-white rounded-3xl shadow-sm p-5 sm:p-6 border border-pink-100/50">
+                                    <div class="mb-6">
+                                        <h2 class="font-bold text-2xl text-pink-500 mb-1">Order Summary </h2>
+                                        <p class="text-sm text-gray-500">Final prices will update at checkout</p>
+                                    </div>
+
+                                    <div class="space-y-3 text-gray-700">
+                                        <div class="flex justify-between items-center py-1">
+                                            <span>Subtotal</span>
+                                            <span class="font-medium">${{ subtotal }}</span>
+                                        </div>
+                                        <div class="flex justify-between items-center py-1">
+                                            <span>Shipping Fee</span>
+                                            <span class="font-medium text-green-600">{{ shippingFee === "0.00" ? 'Free'
+                                                : '$' +
+                                                shippingFee }}</span>
+                                        </div>
+                                        <div class="flex justify-between items-center py-1">
+                                            <span>Tax</span>
+                                            <span class="font-medium">${{ tax }}</span>
+                                        </div>
+                                        <div
+                                            class="border-t border-pink-100 pt-4 mt-2 flex justify-between font-bold text-xl text-pink-500">
+                                            <span>Total</span>
+                                            <span>${{ total }}</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Promo Code -->
+                                    <div class="mt-6">
+                                        <label class="block text-sm font-medium text-gray-600 mb-2">Promo Code
+                                            🎟️</label>
+                                        <div class="flex gap-2">
+                                            <input type="text"
+                                                class="flex-1 px-4 py-2.5 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all bg-pink-50/30"
+                                                placeholder="Enter code">
+                                            <button
+                                                class="px-5 py-2.5 bg-pink-100 text-pink-700 rounded-xl hover:bg-pink-200 transition-colors font-medium">
+                                                Apply
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Action Buttons -->
+                                    <div class="mt-7 space-y-3">
+                                        <button @click="purchase"
+                                            class="w-full py-3.5 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-xl font-medium hover:from-pink-500 hover:to-pink-600 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                                            Proceed to Checkout
+                                        </button>
+                                        <a href="#"
+                                            class="block text-center text-pink-500 hover:text-pink-600 hover:underline transition-colors font-medium">
+                                            ← Continue Shopping
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Order Summary Section -->
-                <div class="space-y-5">
-                    <!-- Summary Card -->
-                    <div class="bg-white rounded-3xl shadow-sm p-5 sm:p-6 border border-pink-100/50">
-                        <div class="mb-6">
-                            <h2 class="font-bold text-2xl text-pink-500 mb-1">Order Summary </h2>
-                            <p class="text-sm text-gray-500">Final prices will update at checkout</p>
-                        </div>
 
-                        <div class="space-y-3 text-gray-700">
-                            <div class="flex justify-between items-center py-1">
-                                <span>Subtotal</span>
-                                <span class="font-medium">${{ subtotal }}</span>
-                            </div>
-                            <div class="flex justify-between items-center py-1">
-                                <span>Shipping Fee</span>
-                                <span class="font-medium text-green-600">{{ shippingFee === "0.00" ? 'Free' : '$' +
-                                    shippingFee }}</span>
-                            </div>
-                            <div class="flex justify-between items-center py-1">
-                                <span>Tax</span>
-                                <span class="font-medium">${{ tax }}</span>
-                            </div>
-                            <div
-                                class="border-t border-pink-100 pt-4 mt-2 flex justify-between font-bold text-xl text-pink-500">
-                                <span>Total</span>
-                                <span>${{ total }}</span>
-                            </div>
-                        </div>
-
-                        <!-- Promo Code -->
-                        <div class="mt-6">
-                            <label class="block text-sm font-medium text-gray-600 mb-2">Promo Code 🎟️</label>
-                            <div class="flex gap-2">
-                                <input type="text"
-                                    class="flex-1 px-4 py-2.5 border border-pink-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-300 focus:border-pink-400 transition-all bg-pink-50/30"
-                                    placeholder="Enter code">
-                                <button
-                                    class="px-5 py-2.5 bg-pink-100 text-pink-700 rounded-xl hover:bg-pink-200 transition-colors font-medium">
-                                    Apply
-                                </button>
-                            </div>
-                        </div>
-
-                        <!-- Action Buttons -->
-                        <div class="mt-7 space-y-3">
-                            <button @click="purchase"
-                                class="w-full py-3.5 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-xl font-medium hover:from-pink-500 hover:to-pink-600 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-                                Proceed to Checkout
-                            </button>
-                            <a href="#"
-                                class="block text-center text-pink-500 hover:text-pink-600 hover:underline transition-colors font-medium">
-                                ← Continue Shopping
-                            </a>
-                        </div>
-                    </div>
 
                     <!-- Payment Methods -->
                     <div class="bg-white rounded-3xl shadow-sm p-5 sm:p-6 border border-pink-100/50">

@@ -43,7 +43,7 @@ export default {
 
 <template>
   <Navbar @openAddModal="showAddProduct = true" @goTo="changePage" :cartCount="cart.length" @search-bar="handleSearch" />
-  <HeroSec v-if="currentPage === 'Home'" :addingProduct="showAddProduct" @closeThisModal="showAddProduct = false"
+  <HeroSec v-if="currentPage === 'Home'" :addingProduct="showAddProduct" @close-modal="showAddProduct = false"
     @add-to-cart="addItem" :bar="searchBar" />
   <AddCart v-if="currentPage === 'cart'" :cart="cart" @history="handleHistory" />
   <PurchaseHistory v-if="currentPage === 'history'" :checkoutItem="purchaseItem" />
