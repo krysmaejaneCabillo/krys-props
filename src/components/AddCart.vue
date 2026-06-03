@@ -6,6 +6,7 @@ export default {
 
         }
     },
+    emits:['Remove item', 'history'],
     data() {
         return {
             subtotal: "0.00",
@@ -14,24 +15,17 @@ export default {
             total: "0.00"
         };
     },
-    computed: {
-        subtotal() {
-            return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2);
-        },
-        shippingFee() {
-            return (this.subtotal > 0 ? 5.99 : 0).toFixed(2);
-        },
-        tax() {
-            return (this.subtotal * 0.08).toFixed(2); // 8% tax
-        },
-        total() {
-            return (parseFloat(this.subtotal) + parseFloat(this.shippingFee) + parseFloat(this.tax)).toFixed(2);
-        }
-    },
+
     methods: {
         removeItem(id) {
 
-            console.log("Remove item:", id);
+            this.$emits("Remove item:", id);
+        },
+        purchase() {
+            this.$emit('history', [
+                ...this.cart,
+            ]);
+          console.log([...this.cart])
         }
     }
 };
@@ -169,7 +163,7 @@ export default {
 
                         <!-- Action Buttons -->
                         <div class="mt-7 space-y-3">
-                            <button
+                            <button @click="purchase"
                                 class="w-full py-3.5 bg-gradient-to-r from-pink-400 to-pink-500 text-white rounded-xl font-medium hover:from-pink-500 hover:to-pink-600 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                                 Proceed to Checkout
                             </button>

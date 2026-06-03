@@ -2,12 +2,14 @@
 import Navbar from './components/Navbar.vue';
 import HeroSec from './components/HeroSec.vue';
 import AddCart from './components/AddCart.vue';
+import PurchaseHistory from './components/PurchaseHistory.vue';
 
 export default {
   components: {
     Navbar,
     HeroSec,
-    AddCart
+    AddCart,
+    PurchaseHistory
 
   },
   data() {
@@ -15,6 +17,7 @@ export default {
       showAddProduct: false,
       currentPage: 'Home',
       cart: [],
+      purchaseItem: [],
       searchBar: ''
     }
   },
@@ -28,17 +31,20 @@ export default {
     addItem(product) {
       this.cart.push({ ...product });
     },
-     handleSearch(searchValue) {
-    this.searchBar = searchValue
-    
-  }
+    handleSearch(searchValue) {
+      this.searchBar = searchValue
+    },
+    handleHistory(cartItem) {
+      this.purchaseItem.push({ ...cartItem });
+    }
   }
 }
 </script>
 
 <template>
-  <Navbar @openAddModal="showAddProduct = tru" @goTo="changePage" :cartCount="cart.length" @search-bar="handleSearch" />
+  <Navbar @openAddModal="showAddProduct = true" @goTo="changePage" :cartCount="cart.length" @search-bar="handleSearch" />
   <HeroSec v-if="currentPage === 'Home'" :addingProduct="showAddProduct" @closeThisModal="showAddProduct = false"
-    @add-to-cart="addItem"  :bar="searchBar" />
-  <AddCart v-if="currentPage === 'cart'" :cart="cart" />
+    @add-to-cart="addItem" :bar="searchBar" />
+  <AddCart v-if="currentPage === 'cart'" :cart="cart" @history="handleHistory" />
+  <PurchaseHistory v-if="currentPage === 'history'" :checkoutItem="purchaseItem" />
 </template>

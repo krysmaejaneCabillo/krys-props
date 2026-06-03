@@ -6,9 +6,10 @@ export default {
             default: 0
         }
     },
+    emits: ['openAddModal', 'goTo', 'search-bar'],
     data() {
         return {
-           searchBar: ''
+            searchBar: ''
         }
     },
 
@@ -19,8 +20,8 @@ export default {
         navigate(page) {
             this.$emit('goTo', page)
         },
-        search(){
-            this.$emit('search-bar', this.searchBar )
+        search() {
+            this.$emit('search-bar', this.searchBar)
         }
     }
 }
@@ -89,7 +90,8 @@ export default {
                     <div class="flex items-center space-x-5">
                         <!-- Search Box -->
                         <div class="relative">
-                            <input v-model="searchBar" @change="search" type="text" placeholder="Search products, brands and styles"
+                            <input v-model="searchBar" @input="search" type="text"
+                                placeholder="Search products, brands and styles"
                                 class="bg-white rounded-full py-2.5 px-4 pl-10 w-[240px] lg:w-[320px] text-[14px] focus:outline-none border border-transparent focus:border-pink-300  focus:ring-2 transition-all">
                             <!-- Search SVG Icon -->
                             <svg class="w-5 h-5 text-shein.gray absolute left-3 top-1/2 -translate-y-1/2" fill="none"
@@ -124,7 +126,18 @@ export default {
                             </svg>
 
                             <span
-                                class="absolute -top-2 -right-2 bg-pink-200 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">{{ cartCount }}</span>
+                                class="absolute -top-2 -right-2 bg-pink-200 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">{{
+                                    cartCount }}</span>
+                        </a>
+
+                        <a  @click="navigate('history')"  href="#" class="text-white hover:text-pink-200 transition-colors relativeve">
+                            <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M12 8v4l3 3M3.22302 14C4.13247 18.008 7.71683 21 12 21c4.9706 0 9-4.0294 9-9 0-4.97056-4.0294-9-9-9-3.72916 0-6.92858 2.26806-8.29409 5.5M7 9H3V5" />
+                            </svg>
+
                         </a>
                     </div>
                 </div>
@@ -167,7 +180,17 @@ export default {
                                         d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
                                 </svg>
                                 <span
-                                    class="absolute -top-2 -right-2 bg-pink-200 text-white text-[9px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">{{ cartCount }}</span>
+                                    class="absolute -top-2 -right-2 bg-pink-200 text-white text-[9px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">{{
+                                        cartCount }}</span>
+                            </a>
+                            <a href="#" class="text-white relative">
+                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="24" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M12 8v4l3 3M3.22302 14C4.13247 18.008 7.71683 21 12 21c4.9706 0 9-4.0294 9-9 0-4.97056-4.0294-9-9-9-3.72916 0-6.92858 2.26806-8.29409 5.5M7 9H3V5" />
+                                </svg>
+
                             </a>
                         </div>
                     </div>

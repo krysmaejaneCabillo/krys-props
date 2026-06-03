@@ -1,4 +1,4 @@
-20260601 13:15:14 || <script>
+ <script>
 export default {
     props: {
         selectedProduct: {
@@ -6,6 +6,7 @@ export default {
        
         }
     },
+    emits: ['close-modal', 'add-to-cart'],
     data() {
         return {
             quantity: 1 

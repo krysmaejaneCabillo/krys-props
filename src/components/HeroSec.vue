@@ -12,6 +12,7 @@ export default {
             type : String
         }
     },
+    emits: ['add-to-cart'],
     data() {
         return {
             modalOpen: false,
