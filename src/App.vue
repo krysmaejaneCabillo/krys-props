@@ -17,8 +17,8 @@ export default {
       showAddProduct: false,
       currentPage: 'Home',
       cart: [],
-      purchaseItem: [],
-      searchBar: ''
+      searchBar: '',
+      checkOutItem: []
     }
   },
   methods: {
@@ -34,17 +34,22 @@ export default {
     handleSearch(searchValue) {
       this.searchBar = searchValue
     },
-    handleHistory(cartItem) {
-      this.purchaseItem.push({ ...cartItem });
+    checkOut(check) {
+      this.checkOutItem.push({ ...check })
     }
+    // removeCheckout(index){
+    //   this.checkOutItem.splice(index, 1)
+    // }
+
   }
 }
 </script>
 
 <template>
-  <Navbar @openAddModal="showAddProduct = true" @goTo="changePage" :cartCount="cart.length" @search-bar="handleSearch" />
+  <Navbar @openAddModal="showAddProduct = true" @goTo="changePage" :cartCount="cart.length"
+    @search-bar="handleSearch" />
   <HeroSec v-if="currentPage === 'Home'" :addingProduct="showAddProduct" @close-modal="showAddProduct = false"
     @add-to-cart="addItem" :bar="searchBar" />
-  <AddCart v-if="currentPage === 'cart'" :cart="cart" @history="handleHistory" />
-  <PurchaseHistory v-if="currentPage === 'history'" :checkoutItem="purchaseItem" />
+  <AddCart v-if="currentPage === 'cart'" :cart="cart" @remove-item="(id) => cart = cart.filter(item => item.id !== id)" />
+  <PurchaseHistory v-if="currentPage === 'history'" :history="checkOutItem" @checkThisout="checkOut" />
 </template>

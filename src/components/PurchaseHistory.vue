@@ -1,11 +1,9 @@
 <script>
 export default {
     props: {
-        checkoutItem: {
-            type: Array,
-
-        },
-
+        history: {
+            type: Array
+        }
     },
     data() {
         return {
@@ -211,8 +209,7 @@ export default {
                     </div>
                 </div>
 
-                <div v-if="checkoutItem.length === 0"
-                    class="py-20 flex flex-col items-center justify-center text-center">
+                <div v-if="history.length === 0" class="py-20 flex flex-col items-center justify-center text-center">
 
                     <div
                         class="w-20 h-20 bg-pink-50 rounded-full flex items-center justify-center mb-4 border border-dashed border-gray-200">
@@ -227,17 +224,17 @@ export default {
                 </div>
 
                 <div v-else>
-                    <div class="bg-white rounded-3xl shadow-sm p-4 sm:p-5 mb-4 hover:shadow-md transition-all duration-300 border border-pink-100/50"
-                        v-for="(items, index) in checkoutItem" :key="items.id">
+                    <div
+                        class="bg-white rounded-3xl shadow-sm p-4 sm:p-5 mb-4 hover:shadow-md transition-all duration-300 border border-pink-100/50">
                         <div class="flex flex-wrap sm:flex-nowrap items-center gap-4">
-                            <img :src="items.image" alt="thumbnail"
+                            <img :src="history.image" alt="thumbnail"
                                 class="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-2xl shadow-sm hover:scale-105 transition-transform">
                             <div class="flex-1 min-w-[150px]">
-                                <h3 class="font-semibold text-gray-800 text-lg mb-1">{{ items.name }}</h3>
+                                <h3 class="font-semibold text-gray-800 text-lg mb-1">{{ history.name }}</h3>
 
                             </div>
                             <div class="font-bold text-gray-800 text-lg w-full sm:w-auto text-right sm:text-left">
-                                ${{ (items.price) }}
+                                ${{ (history.price) }}
                             </div>
                             <button
                                 class="text-rose-400 hover:text-rose-600 w-8 h-8 flex items-center justify-center rounded-full hover:bg-rose-50 transition-colors text-xl font-bold ml-auto sm:ml-0">
@@ -253,8 +250,8 @@ export default {
                     <div
                         class="flex items-center justify-between border border-gray-300 px-3 py-2 text-xs text-gray-500 cursor-pointer hover:border-black transition-colors rounded-sm">
                         <span>Self-service to find order</span>
-                        <svg class="text-[10px] text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <svg class="text-[10px] text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="m10 16 4-4-4-4" />
                         </svg>

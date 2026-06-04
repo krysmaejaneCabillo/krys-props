@@ -9,7 +9,7 @@ export default {
             type: Object,
         },
         bar: {
-            type : String
+            type: String
         }
     },
     emits: ['add-to-cart'],
@@ -88,7 +88,7 @@ export default {
                     price: '125',
                     sku: 'sz24521265665417997'
                 },
-                
+
                 {
                     id: 11,
                     image: 'https://th.bing.com/th/id/OIP.4viJ-av_tBltW_egkRnm9QHaMs?w=190&h=327&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3',
@@ -103,19 +103,19 @@ export default {
                     price: '125',
                     sku: 'sz24521265665417997'
                 },
-                
+
             ],
 
 
         };
     },
-        computed: {
+    computed: {
         filteredProducts() {
             if (!this.bar.trim()) {
                 return this.products
             }
             const query = this.bar.toLowerCase().trim();
-            return this.products.filter(product => 
+            return this.products.filter(product =>
                 product.name.toLowerCase().includes(query)
             )
         }
@@ -283,7 +283,7 @@ export default {
                 class="w-fit mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-items-center justify-center gap-y-12 gap-x-8 px-4">
                 <div v-for="(product, index) in filteredProducts" :key="product.id"
                     class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border-2 border-pink-100">
-                    
+
                     <div class="relative overflow-hidden">
                         <img @click="openModal(index)" :src="product.image" :alt="product.name"
                             class="cursor-pointer h-72 w-72 object-cover rounded-t-xl hover:scale-105 transition-transform duration-500" />
@@ -296,7 +296,7 @@ export default {
                     <!-- Product Info -->
                     <div class="px-5 py-4 w-72 bg-white">
                         <span class="text-gray-800 font-medium text-base block truncate">{{ product.name
-                        }}</span>
+                            }}</span>
 
                         <div class="flex items-center justify-between mt-3">
                             <p class="text-xl font-bold text-pink-600 cursor-auto">${{ product.price }}</p>
@@ -313,7 +313,7 @@ export default {
                             </div>
                         </div>
 
-                       
+
                         <div class="mt-3 flex items-center text-yellow-500">
                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M12 0l2.5 7.5h7.5l-6 4.5 2.5 7.5-6-4.5-6 4.5 2.5-7.5-6-4.5h7.5z" />
